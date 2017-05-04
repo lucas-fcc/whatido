@@ -1,0 +1,85 @@
+<div class="container">
+    
+    <div class="col-md-4 col-md-offset-4 content">
+
+        <div class="page-header">
+            <h1 class="text-center">User Info</h1>
+        </div>
+
+        <div class="user-info">
+            <ul class="list-unstyled">
+                <li>
+                    <strong>
+                        <i class="fa fa-user fa-fw" aria-hidden="true"></i> Name
+                    </strong>
+                    <span>{{userInfoCtrl.userInfo.name}}</span>
+                </li>
+                
+                <li>
+                    <strong>
+                        <i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Email
+                    </strong>
+                    <span>{{userInfoCtrl.userInfo.email}}</span>
+                </li>
+            </ul>
+        </div>
+    
+        <hr>
+
+        <wid-alert-message message="userInfoCtrl.message"></wid-alert-message>
+
+        <form name="userInfoCtrl.passwordForm" ng-submit="userInfoCtrl.doChangePassword()" novalidate>
+            
+            <div class="form-group"
+                ng-class="{'has-error': userInfoCtrl.passwordForm.old.$error.required && userInfoCtrl.passwordForm.old.$touched, 
+                'has-success': !userInfoCtrl.passwordForm.old.$error.required && userInfoCtrl.passwordForm.old.$touched }">
+
+                <div class="input-group margin-bottom-sm">
+                    <span class="input-group-addon">
+                        <i class="fa fa-key fa-fw" aria-hidden="true"></i>
+                    </span>
+
+                    <input type="password"
+                        name="old"
+                        ng-model="userInfoCtrl.password.old"
+                        class="form-control input-lg"
+                        placeholder="Current Password"
+                        required />
+
+                </div>
+            </div>
+            
+            <div class="form-group"
+                ng-class="{'has-error': userInfoCtrl.passwordForm.new.$error.required && userInfoCtrl.passwordForm.new.$touched, 
+                'has-success': !userInfoCtrl.passwordForm.new.$error.required && userInfoCtrl.passwordForm.new.$touched }">
+
+                <div class="input-group margin-bottom-sm">
+                    <span class="input-group-addon">
+                        <i class="fa fa-key fa-fw" aria-hidden="true"></i>
+                    </span>
+
+                    <input type="password"
+                        name="new"
+                        ng-model="userInfoCtrl.password.new"
+                        class="form-control input-lg"
+                        placeholder="New Password"
+                        required />
+
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit"
+                    class="btn btn-lg btn-primary btn-block"
+                    ng-disabled="userInfoCtrl.passwordForm.$invalid || userInfoCtrl.isSubmitting">
+                    <i class="fa fa-fw"
+                        aria-hidden="true"
+                        ng-class="{'fa-refresh': !userInfoCtrl.isSubmitting, 'fa-spinner fa-spin': userInfoCtrl.isSubmitting}"></i> {{userInfoCtrl.isSubmitting ? 'Please Wait' : 'Change Password'}}
+                </button>
+            </div>
+            
+        </form>
+        
+    </div>
+    
+</div>

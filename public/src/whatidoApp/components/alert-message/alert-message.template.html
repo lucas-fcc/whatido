@@ -1,0 +1,14 @@
+<div class="alert alert-dismissible fade in"
+    role="alert"
+    ng-class="{'alert-danger': $ctrl.message.type == 'error', 'alert-success': $ctrl.message.type == 'success'}"
+     ng-if="$ctrl.message">
+
+    <button type="button" class="close" aria-label="Close" ng-click="$ctrl.closeAlert()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    
+    <span class="fa"
+        aria-hidden="true"
+        ng-class="{'fa-exclamation-triangle': $ctrl.message.type == 'error', 'fa-check-circle': $ctrl.message.type == 'success'}"></span>
+    <span class="sr-only">{{$ctrl.message.type == 'error' ? 'Error' : 'Success'}}:</span> {{$ctrl.message.description}}
+</div>

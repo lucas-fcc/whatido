@@ -1,0 +1,85 @@
+<div class="container">
+    
+    <div class="col-md-8 col-md-offset-2 content">
+
+        <div class="page-header">
+            <h1 class="text-center">Tasks Lists</h1>
+        </div>
+
+        <wid-alert-message message="tasksListsCtrl.message"></wid-alert-message>
+
+        <!-- FORM FOR SMALL DEVICES -->
+        <form class="visible-xs" name="tasksListsCtrl.taskForm" ng-submit="tasksListsCtrl.createTask()" novalidate>
+
+            <div class="form-group"
+                ng-class="{'has-error': tasksListsCtrl.taskForm.description.$error.required && tasksListsCtrl.taskForm.description.$touched, 
+                'has-success': !tasksListsCtrl.taskForm.description.$error.required && tasksListsCtrl.taskForm.description.$touched }">
+
+                <div class="input-group margin-bottom-sm">
+                    <span class="input-group-addon">
+                        <i class="fa fa-list fa-fw" aria-hidden="true"></i>
+                    </span>
+
+                    <input type="text"
+                        name="description"
+                        ng-model="tasksListsCtrl.list.description"
+                        class="form-control input-lg"
+                        placeholder="Description"
+                        required />
+
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit"
+                    class="btn btn-lg btn-primary btn-block"
+                    ng-disabled="tasksListsCtrl.taskForm.$invalid || tasksListsCtrl.isSubmitting">
+                    <i class="fa fa-fw"
+                        aria-hidden="true"
+                        ng-class="{'fa-plus': !tasksListsCtrl.isSubmitting, 'fa-spinner fa-spin': tasksListsCtrl.isSubmitting}"></i> {{tasksListsCtrl.isSubmitting ? 'Please Wait' : 'New Task List'}}
+                </button>
+            </div>
+        </form>
+
+        <!-- FORM FOR BIG DEVICES -->
+        <form class="form-horizontal hidden-xs" name="tasksListsCtrl.taskForm" ng-submit="tasksListsCtrl.createTask()" novalidate>
+
+            <div class="form-group"
+                ng-class="{'has-error': tasksListsCtrl.taskForm.description.$error.required && tasksListsCtrl.taskForm.description.$touched, 
+                'has-success': !tasksListsCtrl.taskForm.description.$error.required && tasksListsCtrl.taskForm.description.$touched }">
+
+                <div class="col-sm-9">
+
+                    <div class="input-group margin-bottom-sm">
+                        <span class="input-group-addon">
+                            <i class="fa fa-list fa-fw" aria-hidden="true"></i>
+                        </span>
+
+                        <input type="text"
+                            name="description"
+                            ng-model="tasksListsCtrl.list.description"
+                            class="form-control"
+                            placeholder="Description"
+                            required />
+
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <button type="submit"
+                        class="btn btn-block btn-primary"
+                        ng-disabled="tasksListsCtrl.taskForm.$invalid || tasksListsCtrl.isSubmitting">
+                        <i class="fa fa-fw" aria-hidden="true"
+                            ng-class="{'fa-plus': !tasksListsCtrl.isSubmitting, 'fa-spinner fa-spin': tasksListsCtrl.isSubmitting}"></i> {{tasksListsCtrl.isSubmitting ? 'Please Wait' : 'New Task List'}}
+                    </button>
+                </div>    
+            
+            </div>
+        </form>
+
+        <wid-tasks-lists-table lists="tasksListsCtrl.tasksLists"
+            on-delete="tasksListsCtrl.deleteList(list)"></wid-tasks-lists-table>
+        
+    </div>
+    
+</div>

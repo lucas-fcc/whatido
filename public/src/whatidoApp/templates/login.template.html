@@ -1,0 +1,69 @@
+<div class="container">
+    
+    <div class="col-md-4 col-md-offset-4 content">
+
+        <div class="page-header">
+            <h1 class="text-center">Login</h1>
+        </div>
+    
+        <wid-alert-message message="loginCtrl.message"></wid-alert-message>
+
+        <form name="loginCtrl.loginForm" ng-submit="loginCtrl.doLogin()" novalidate>
+            
+            <div class="form-group"
+            ng-class="{'has-error' : loginCtrl.loginForm.email.$invalid && loginCtrl.loginForm.email.$touched, 
+                'has-success' : !loginCtrl.loginForm.email.$invalid && loginCtrl.loginForm.email.$touched }">
+
+                <div class="input-group margin-bottom-sm">
+                    <span class="input-group-addon">
+                        <i class="fa fa-envelope fa-fw" aria-hidden="true"></i>
+                    </span>
+
+                    <input type="email"
+                        name="email" 
+                        ng-model="loginCtrl.login.email"
+                        class="form-control input-lg"
+                        placeholder="Email"
+                        required />
+
+                </div>
+
+            </div>
+            
+            <div class="form-group"
+                ng-class="{'has-error' : loginCtrl.loginForm.password.$error.required && loginCtrl.loginForm.password.$touched, 
+                'has-success' : !loginCtrl.loginForm.password.$error.required && loginCtrl.loginForm.password.$touched }">
+
+                <div class="input-group margin-bottom-sm">
+                    <span class="input-group-addon">
+                        <i class="fa fa-key fa-fw" aria-hidden="true"></i>
+                    </span>
+
+                    <input type="password"
+                        name="password"
+                        ng-model="loginCtrl.login.password"
+                        class="form-control input-lg"
+                        placeholder="Password"
+                        required />
+
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit"
+                    class="btn btn-lg btn-primary btn-block"
+                    ng-disabled="loginCtrl.loginForm.$invalid || loginCtrl.isSubmitting">
+                    <i class="fa fa-fw"
+                        aria-hidden="true"
+                        ng-class="{'fa-sign-in': !loginCtrl.isSubmitting, 'fa-spinner fa-spin': loginCtrl.isSubmitting}"></i> {{loginCtrl.isSubmitting ? 'Please Wait' : 'Login'}}
+                </button>
+            </div>
+            
+        </form>
+        
+        <a ui-sref="register" class="pull-left">Register</a>
+        <a ui-sref="recover-password" class="pull-right">Forgot your password?</a>
+        
+    </div>
+    
+</div>

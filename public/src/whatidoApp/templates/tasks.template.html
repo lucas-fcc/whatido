@@ -1,0 +1,127 @@
+<div class="container">
+    
+    <div class="col-md-8 col-md-offset-2 content">
+
+        <div class="page-header">
+            <h1 class="text-center">{{tasksCtrl.taskList.description}}</h1>
+        </div>
+
+        <wid-alert-message message="tasksCtrl.message"></wid-alert-message>
+    
+        <!-- FORM FOR SMALL DEVICES -->
+        <form class="visible-xs" name="tasksCtrl.taskForm" ng-submit="tasksCtrl.createTask()" novalidate>
+
+            <div class="form-group"
+                ng-class="{'has-error': tasksCtrl.taskForm.description.$error.required && tasksCtrl.taskForm.description.$touched, 
+                'has-success': !tasksCtrl.taskForm.description.$error.required && tasksCtrl.taskForm.description.$touched }">
+
+                <div class="input-group margin-bottom-sm">
+                    <span class="input-group-addon">
+                        <i class="fa fa-thumb-tack fa-fw" aria-hidden="true"></i>
+                    </span>
+
+                    <input type="text"
+                        name="description"
+                        ng-model="tasksCtrl.task.description"
+                        class="form-control input-lg"
+                        placeholder="Task Description"
+                        required />
+
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit"
+                    class="btn btn-block btn-primary"
+                    ng-disabled="tasksCtrl.taskForm.$invalid || tasksCtrl.isSubmitting">
+                    <i class="fa fa-fw"
+                        aria-hidden="true"
+                        ng-class="{'fa-plus': !tasksCtrl.isSubmitting, 'fa-spinner fa-spin': tasksCtrl.isSubmitting}"></i> {{tasksCtrl.isSubmitting ? 'Please Wait' : 'Add New Task'}}
+                </button>
+            </div>
+        </form>
+
+        <!-- FORM FOR BIG DEVICES -->
+        <form class="form-horizontal hidden-xs" name="tasksCtrl.taskForm" ng-submit="tasksCtrl.createTask()" novalidate>
+
+            <div class="form-group"
+                ng-class="{'has-error': tasksCtrl.taskForm.description.$error.required && tasksCtrl.taskForm.description.$touched, 
+                'has-success': !tasksCtrl.taskForm.description.$error.required && tasksCtrl.taskForm.description.$touched }">
+
+                <div class="col-sm-9">
+
+                    <div class="input-group margin-bottom-sm">
+                        <span class="input-group-addon">
+                            <i class="fa fa-thumb-tack fa-fw" aria-hidden="true"></i>
+                        </span>
+
+                        <input type="text"
+                            name="description"
+                            ng-model="tasksCtrl.task.description"
+                            class="form-control"
+                            placeholder="Task Description"
+                            required />
+
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <button type="submit"
+                        class="btn btn-block btn-primary"
+                        ng-disabled="tasksCtrl.taskForm.$invalid || tasksCtrl.isSubmitting">
+                        <i class="fa fa-fw"
+                            aria-hidden="true"
+                            ng-class="{'fa-plus': !tasksCtrl.isSubmitting, 'fa-spinner fa-spin': tasksCtrl.isSubmitting}"></i> {{tasksCtrl.isSubmitting ? 'Please Wait' : 'Add New Task'}}
+                    </button>
+                </div>    
+            
+            </div>
+        </form>
+
+        <hr>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Current Task</h3>
+            </div>
+            
+            <div class="panel-body">
+                <div class="text-center">
+                    <p ng-if="!tasksCtrl.taskList.tasks.length">
+                        You have no tasks yet.
+                    </p>
+                    <p ng-if="tasksCtrl.isAllTasksDone() && tasksCtrl.taskList.tasks.length">
+                        You have no more tasks to do.
+                    </p>
+                    
+                    <div ng-if="!tasksCtrl.isAllTasksDone()">
+                        <p ng-if="tasksCtrl.taskList.currentTask">
+                            The current task is: 
+                            <strong class="text-info">{{tasksCtrl.taskList.currentTask.description}}</strong>
+                        </p>
+                        <p ng-if="!tasksCtrl.taskList.currentTask">
+                            You already have tasks, why don't you ask a suggestion?
+                        </p>
+                        
+                        <button type="submit"
+                            class="btn btn-primary btn-sm"
+                            ng-click="tasksCtrl.newSuggestion()"
+                            ng-disabled="tasksCtrl.isGettingSuggestion">
+                            <i class="fa fa-refresh fa-spin fa-fw"
+                                aria-hidden="true"
+                                ng-class="{'fa-refresh': !tasksCtrl.isGettingSuggestion, 'fa-spinner': tasksCtrl.isGettingSuggestion}"></i> {{tasksCtrl.isGettingSuggestion ? 'Please Wait' : 'Need a Suggestion?'}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <wid-tasks-table tasks="tasksCtrl.taskList.tasks"
+            on-delete="tasksCtrl.deleteTask(task)"
+            on-check="tasksCtrl.checkTask(task)"></wid-tasks-table>
+        
+    </div>
+    
+</div>

@@ -1,0 +1,123 @@
+<!-- Header -->
+<header class="header">
+
+    <div class="text-vertical-center">
+        <h1>What I Do?!</h1>
+        <h3>Do you have a lot of things to do and don't know where to begin?</h3>
+        <br>
+        
+        <a ui-sref="register"
+            class="btn btn-dark btn-lg"
+            ng-if="!homeCtrl.isAuthenticated()">
+            Register
+        </a>
+        <a ui-sref="tasks-lists"
+            class="btn btn-dark btn-lg"
+            ng-if="homeCtrl.isAuthenticated()">
+            Tasks Lists
+        </a>
+        
+        <a class="btn btn-dark btn-lg" 
+            ng-click="homeCtrl.goTo('know-more')">
+            Tell me more
+        </a>
+    </div>
+
+</header>
+
+<!-- About -->
+<section id="know-more" class="know-more">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Maybe a suggestion would be helpful...</h2>
+                <p class="lead">
+                    Create lists with all the tasks you need to do and then, if you're a little confused, let us give you a hint where to start.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- features -->
+<section class="features bg-primary">
+    
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-10 col-lg-offset-1">
+                <h2>How It Works?</h2>
+                <hr class="small">
+
+                <!-- Itens -->
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="feature-item">
+                            <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-list fa-stack-1x text-primary"></i>
+                            </span>
+                            <h4>
+                                <strong>Create a Task List</strong>
+                            </h4>
+                            <p>
+                                Create a list to group the things you need to do, be it your shopping list, your schoolwork, etc. You can have as many lists as you want.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="feature-item">
+                            <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-thumb-tack fa-stack-1x text-primary"></i>
+                            </span>
+                            <h4>
+                                <strong>Add Tasks</strong>
+                            </h4>
+                            <p>
+                                Add to the task list you created before the tasks that belong to it, so you will keep them organized.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3 col-sm-6">
+                        <div class="feature-item">
+                            <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-lightbulb-o fa-stack-1x text-primary"></i>
+                            </span>
+                            <h4>
+                                <strong>Ask a Suggestion</strong>
+                            </h4>
+                            <p>
+                                After you add your tasks to a task list, if you feel uncertain by which one start, ask for a suggestion.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3 col-sm-6">
+                        <div class="feature-item">
+                            <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-check-square-o fa-stack-1x text-primary"></i>
+                            </span>
+                            <h4>
+                                <strong>Finish Tasks</strong>
+                            </h4>
+                            <p>
+                                The tasks that you are finishing can be marked as completed and then they will no longer be drawn as a suggestion.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Itens -->
+
+            </div>
+        </div>
+    </div>
+    
+</section>

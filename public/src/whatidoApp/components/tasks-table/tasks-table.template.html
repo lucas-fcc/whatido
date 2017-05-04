@@ -1,0 +1,59 @@
+<div class="tab-content">
+
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li role="presentation" class="active">
+            <a role="tab" data-toggle="tab" aria-expanded="true" ng-click="$ctrl.toggleTasks('todo')">
+                To Do
+            </a>
+        </li>
+
+        <li role="presentation" class="">
+            <a role="tab" data-toggle="tab" aria-expanded="false" ng-click="$ctrl.toggleTasks('done')">
+                Done
+            </a>
+        </li>
+    </ul>
+
+    <div role="tabpanel" class="tab-pane fade active in">
+        <table class="table table-bordered table-striped">
+    
+            <colgroup>
+                <col class="col-xs-1">
+                <col class="col-xs-9">
+                <col class="col-xs-2">
+            </colgroup>
+            
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Description</th>
+                    <th class="text-center">Remove</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-if="!$ctrl.tasks.length">
+                    <td colspan="3" class="text-center">You have no tasks yet.</td>
+                </tr>
+                
+                <tr ng-repeat="task in $ctrl.tasks | filter:$ctrl.filterTasks">
+                    <td class="text-center">
+                        <input type="checkbox" name="" ng-model="task.done" ng-change="$ctrl.check(task);">
+                    </td>
+
+                    <td>{{task.description}}</td>
+                    
+                    <td>
+                        <div class="text-center">
+                            <button type="submit" value="Remove" class="btn btn-warning btn-sm" ng-click="$ctrl.delete(task);">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    
+</div>
