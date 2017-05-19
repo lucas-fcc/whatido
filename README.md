@@ -4,7 +4,7 @@ WhatIDo is an application to manage tasks, where users can create lists with dif
 
 It was created as my final project for the [Full Stack Web Development Specialization course](https://www.coursera.org/specializations/full-stack) from Coursera.
 
-You can see a live version running [here](https://whatido.glitch.me/), and the API documentation [here](https://whatido.glitch.me/apidoc/);
+You can see a live version running [here](https://wid.glitch.me).
 
 ### How To Run
 
